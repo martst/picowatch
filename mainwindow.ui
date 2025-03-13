@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1025</width>
+    <height>723</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Picowatch</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>tuner_knob.png</normaloff>tuner_knob.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>130</y>
+      <width>131</width>
+      <height>49</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set LNB voltage</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>10</y>
+      <width>601</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>PicoTuner Control</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>130</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <widget class="QRadioButton" name="lnb_a_off">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Off</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="lnb_a_12">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>10</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>12V</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="lnb_a_18">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>10</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>18V</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>IP address of PicoTuner</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="cmdListBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>460</y>
+      <width>291</width>
+      <height>201</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bcastIPAddr">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>80</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string>No IP address</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="p9902Box">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>300</y>
+      <width>981</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="rx1Freq">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>190</y>
+      <width>113</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="rx2Freq">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>230</y>
+      <width>113</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>190</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QRadioButton" name="rx1Top">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>top</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rx1Bot">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>10</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>bottom</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>230</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QRadioButton" name="rx2Top">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>top</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rx2Bot">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>10</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>bottom</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>200</y>
+      <width>56</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RX 1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>240</y>
+      <width>56</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RX 2</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rx1LNB">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>200</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LNB</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rx2LNB">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>240</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LNB</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="rx1Rate">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>190</y>
+      <width>87</width>
+      <height>32</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="rx2Rate">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>230</y>
+      <width>87</width>
+      <height>32</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rx1SubBut">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>190</y>
+      <width>84</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Submit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rx2SubBut">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>230</y>
+      <width>84</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Submit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>431</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show video streams</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>56</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Summary</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1025</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionDebug"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionDebug">
+   <property name="text">
+    <string>Debug</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
