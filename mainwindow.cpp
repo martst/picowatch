@@ -39,9 +39,9 @@ std::string rx1Rate;
 std::string rx2Rate;
 std::string rx1Ant;
 std::string rx2Ant;
-bool rx1WinOpen;
-bool rx2WinOpen;
-bool techDataOpen;
+bool rx1WinOpen = false;
+bool rx2WinOpen = false;
+bool techDataOpen = false;
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -115,7 +115,7 @@ void MainWindow::wakeUpPico()
 
 void MainWindow::initialiseRates()
 {
-    QStringList list=(QStringList()<<"333"<<"500"<<"1000"<<"1500"<<"4000");
+    QStringList list=(QStringList()<<"33"<<"66"<<"125"<<"250"<<"333"<<"500"<<"1000"<<"1500"<<"4000");
     ui->rx1Rate->addItems(list);
     ui->rx2Rate->addItems(list);
 
@@ -524,16 +524,24 @@ void MainWindow::on_rx2Bot_clicked(bool checked)
 void MainWindow::on_pushButton_clicked()
 {
 // use this as parent to have a popup. Null to have a window
-    vidDialog1 = new VideoDialog();
-    vidDialog1->show();
-    rx1WinOpen = true;
+    if (!rx1WinOpen) {
+        vidDialog1 = new VideoDialog();
+        vidDialog1->show();
+        connect(vidDialog1, &QWidget::destroyed, this, &MainWindow::rx1VideoDestroy);
+        vidDialog1->setAttribute(Qt::WA_DeleteOnClose);
+        rx1WinOpen = true;
+        startRx1Video();
+    }
 
-    vidDialog2 = new VideoDialog();
-    vidDialog2->show();
-    rx2WinOpen = true;
+    if (!rx2WinOpen) {
+        vidDialog2 = new VideoDialog();
+        vidDialog2->show();
+        connect(vidDialog2, &QWidget::destroyed, this, &MainWindow::rx2VideoDestroy);
+        vidDialog2->setAttribute(Qt::WA_DeleteOnClose);
+        rx2WinOpen = true;
+        startRx2Video();
+    }
 
-    startRx1Video();
-    startRx2Video();
 }
 
 void MainWindow::startRx1Video()
@@ -552,6 +560,18 @@ void MainWindow::startRx2Video()
         QString pFile = "udp://@:9942";
         vidDialog2->playFile(pFile);
     }
+}
+
+void MainWindow::rx1VideoDestroy()
+{
+    rx1WinOpen = false;
+    qDebug()<< "rx1 deleted.";
+}
+
+void MainWindow::rx2VideoDestroy()
+{
+    rx2WinOpen = false;
+    qDebug()<< "rx2 deleted.";
 }
 
 
@@ -580,11 +600,21 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::on_actionDebug_triggered()
 {
 // show the debug/tech data window
-    techdata = new Techdata();
-    techdata->setModal(false);
-    techdata->show();
+    if (!techDataOpen)
+    {
+        techdata = new Techdata();
+        techdata->setModal(false);
+        techdata->show();
+        connect(techdata, &QWidget::destroyed, this, &MainWindow::techDataDestroy);
+        techdata->setAttribute(Qt::WA_DeleteOnClose);
+        techDataOpen = true;
+    }
+}
 
-    techDataOpen = true;
+void MainWindow::techDataDestroy()
+{
+    techDataOpen = false;
+    qDebug()<< "tech data deleted.";
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

@@ -39,6 +39,9 @@ public:
     void startRx1Video();
     void startRx2Video();
     void closeEvent(QCloseEvent *event);
+    void rx1VideoDestroy();
+    void rx2VideoDestroy();
+    void techDataDestroy();
 
 
 private slots:
